@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VARIABLES CSS — Paleta Tulipanes Pastel
+   ══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Colores principales */
+  --color-bg:            #FFF9F7;
+  --color-cream:         #F4E9E5;
+  --color-rosa-tulip:    #E8B7C8;
+  --color-rosa-petalo:   #D98FA8;
+  --color-malva:         #B99AAA;
+  --color-verde-salvia:  #A8B5A0;
+
+  /* Neutros */
+  --color-carbon:        #171516;
+  --color-gris-oscuro:   #3D3A3C;
+  --color-gris-calido:   #6F686A;
+  --color-gris-claro:    #D9D5D3;
+  --color-beige:         #EDE2D6;
+
+  /* Acentos */
+  --color-coral:         #F2A7B5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ══════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-carbon);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Patrón floral sutil en el fondo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-color: #FFF9F7;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cg opacity='0.055'%3E%3C!-- Tulipán central --%3E%3Cpath d='M70 90 Q58 68 56 44 Q70 28 84 44 Q82 68 70 90z' fill='%23E8B7C8'/%3E%3Cpath d='M56 44 Q44 34 46 20 Q56 14 64 24 Q62 36 56 44z' fill='%23D98FA8'/%3E%3Cpath d='M84 44 Q96 34 94 20 Q84 14 76 24 Q78 36 84 44z' fill='%23D98FA8'/%3E%3C!-- Tallo --%3E%3Cline x1='70' y1='90' x2='70' y2='116' stroke='%23A8B5A0' stroke-width='2'/%3E%3C!-- Hojas --%3E%3Cpath d='M70 98 Q60 90 54 82' stroke='%23A8B5A0' stroke-width='1.5' fill='none'/%3E%3Cpath d='M70 98 Q80 90 86 82' stroke='%23A8B5A0' stroke-width='1.5' fill='none'/%3E%3C!-- Pequeños puntos decorativos --%3E%3Ccircle cx='20' cy='20' r='2.5' fill='%23E8B7C8'/%3E%3Ccircle cx='120' cy='20' r='2' fill='%23B99AAA'/%3E%3Ccircle cx='20' cy='120' r='2' fill='%23B99AAA'/%3E%3Ccircle cx='120' cy='120' r='2.5' fill='%23E8B7C8'/%3E%3Ccircle cx='70' cy='8' r='1.5' fill='%23D98FA8'/%3E%3Ccircle cx='70' cy='132' r='1.5' fill='%23D98FA8'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  input, textarea, select {
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENTES REUTILIZABLES
+   ══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+
+  /* Botones */
+  .btn-primary {
+    @apply bg-carbon text-tulip-white px-6 py-3 text-sm font-medium tracking-wider uppercase
+           hover:bg-gris-oscuro transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-rosa-tulip text-carbon px-6 py-3 text-sm font-medium tracking-wider uppercase
+           hover:bg-rosa-petalo hover:text-white transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border border-carbon text-carbon px-6 py-3 text-sm font-medium tracking-wider uppercase
+           hover:bg-carbon hover:text-white transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply text-carbon underline-offset-4 hover:underline text-sm font-medium
+           transition-all duration-200;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-sm shadow-card hover:shadow-hover transition-shadow duration-300;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full border border-gris-claro bg-white px-4 py-3 text-sm
+           focus:outline-none focus:border-rosa-tulip focus:ring-1 focus:ring-rosa-tulip
+           transition-all duration-200 placeholder:text-gris-calido;
+  }
+
+  .input-label {
+    @apply block text-xs font-medium text-gris-oscuro uppercase tracking-wider mb-1.5;
+  }
+
+  .input-error {
+    @apply text-red-500 text-xs mt-1;
+  }
+
+  /* Badge */
+  .badge {
+    @apply text-xs px-2 py-0.5 font-medium uppercase tracking-wider;
+  }
+
+  .badge-nuevo {
+    @apply badge bg-rosa-tulip text-carbon;
+  }
+
+  .badge-oferta {
+    @apply badge bg-carbon text-white;
+  }
+
+  .badge-verde {
+    @apply badge bg-verde-salvia text-white;
+  }
+
+  /* Sección */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl text-carbon mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-gris-calido text-sm uppercase tracking-widest mb-8;
+  }
+
+  /* Divider floral */
+  .floral-divider {
+    @apply flex items-center gap-4 my-8;
+  }
+
+  .floral-divider::before,
+  .floral-divider::after {
+    content: '';
+    @apply flex-1 border-t border-gris-claro;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLLBAR PERSONALIZADA
+   ══════════════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-cream); }
+::-webkit-scrollbar-thumb { background: var(--color-rosa-tulip); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-rosa-petalo); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SWIPER (slider del hero)
+   ══════════════════════════════════════════════════════════════════════════ */
+.swiper-pagination-bullet {
+  background: var(--color-rosa-petalo) !important;
+  opacity: 0.5 !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADMIN — Sin patrón floral
+   ══════════════════════════════════════════════════════════════════════════ */
+.admin-layout body::before {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMACIONES
+   ══════════════════════════════════════════════════════════════════════════ */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-cream) 25%,
+    var(--color-bg) 37%,
+    var(--color-cream) 63%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
